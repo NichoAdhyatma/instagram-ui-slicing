@@ -245,6 +245,44 @@ class HomeWidget extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.grid_on),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.person_pin_outlined),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(
+            height: 5,
+          ),
+
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 2,
+              crossAxisSpacing: 2,
+            ),
+            itemCount: 10,
+            itemBuilder: (context, index) => Image.network(
+              "https://picsum.photos/id/${index * 20}/500/500",
+            ),
           )
         ],
       ),
