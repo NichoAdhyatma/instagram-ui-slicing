@@ -9,9 +9,8 @@ void main() {
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        iconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
+        brightness: Brightness.light
+        
       ),
       title: "Application",
       initialRoute: AppPages.INITIAL,

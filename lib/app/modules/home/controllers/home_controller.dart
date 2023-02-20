@@ -35,5 +35,6 @@ class HomeController extends GetxController {
 
   void changeIndexBottomNav(int index) {
     indexWidget.value = index;
+    indexWidget = index.obs;
   }
 }

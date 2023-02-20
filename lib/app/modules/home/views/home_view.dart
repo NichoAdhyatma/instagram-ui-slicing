@@ -15,6 +15,9 @@ class HomeView extends GetView<HomeController> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        selectedIconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
         type: BottomNavigationBarType.fixed,
         onTap: (value) => controller.changeIndexBottomNav(value),
         items: const [
@@ -22,36 +25,32 @@ class HomeView extends GetView<HomeController> {
             label: "",
             icon: Icon(
               Icons.home_outlined,
-              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             label: "",
             icon: Icon(
               Icons.search_outlined,
-              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             label: "",
             icon: Icon(
               Icons.video_collection_outlined,
-              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             label: "",
             icon: Icon(
               Icons.shopping_bag_outlined,
-              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
-              label: "",
-              icon: Icon(
-                Icons.person_2_outlined,
-                color: Colors.black,
-              )),
+            label: "",
+            icon: Icon(
+              Icons.person_2_outlined,
+            ),
+          ),
         ],
       ),
     );

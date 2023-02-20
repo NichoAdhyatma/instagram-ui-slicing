@@ -33,15 +33,7 @@ class HomeWidget extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 3.0,
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(7.0)),
-                        child: const Icon(Icons.add),
-                      ),
+                      icon: const Icon(Icons.add_outlined),
                     ),
                     const SizedBox(
                       width: 8.0,
@@ -57,7 +49,8 @@ class HomeWidget extends StatelessWidget {
           ),
           //info profile
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               children: [
                 //image_profile
@@ -102,13 +95,186 @@ class HomeWidget extends StatelessWidget {
                 ),
                 //followers
                 Expanded(
-                  child: Row(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      InfoProfile("Post", "10"),
+                      InfoProfile("Followers", "190"),
+                      InfoProfile("Following", "100"),
+                    ],
+                  ),
                 ),
               ],
+            ),
+          ),
+          //text_info_account
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Nicho.",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  "Close.",
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.link,
+                      color: Colors.blue[700],
+                    ),
+                    const SizedBox(
+                      width: 5.0,
+                    ),
+                    Text(
+                      "www.github.com",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.blue[700],
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          //buttons
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          width: 3,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: const Text("Edit Profile"),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5.0,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          width: 3,
+                        ),
+                      ),
+                    ),
+                    child: const Text("Share Profile"),
+                    onPressed: () {},
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    icon: const Icon(Icons.person_add),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //story
+          SizedBox(
+            height: 120,
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              scrollDirection: Axis.horizontal,
+              itemCount: 6,
+              itemBuilder: (context, index) => Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: 75,
+                          height: 75,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[400],
+                              borderRadius: BorderRadius.circular(50.0)),
+                        ),
+                        Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            color: Colors.grey[700],
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  "https://picsum.photos/id/${index * 20}/500/500"),
+                            ),
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text("Story ${index + 1}"),
+                ],
+              ),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class InfoProfile extends StatelessWidget {
+  const InfoProfile(
+    this.title,
+    this.count, {
+    super.key,
+  });
+
+  final String title;
+  final String count;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          count,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 21,
+          ),
+        ),
+        Text(title),
+      ],
     );
   }
 }
